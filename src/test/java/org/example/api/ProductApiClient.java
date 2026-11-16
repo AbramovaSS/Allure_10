@@ -31,7 +31,7 @@ public class ProductApiClient {
                 .get("id");
     }
 
-    @Step("Удалить товар с ID {id}")
+    @Step("Удалить товар с ID")
     public Response deleteProductById(Integer id) {
         return given()
                 .spec(getRequestSpec())

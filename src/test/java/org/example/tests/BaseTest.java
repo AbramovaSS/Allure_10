@@ -82,7 +82,6 @@ public class BaseTest {
         }
     }
 
-    @Step("Закрыть браузер")
     private void closeBrowser() {
         Selenide.closeWebDriver();
     }
