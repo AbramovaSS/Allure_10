@@ -21,8 +21,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
-
 public class BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
@@ -72,7 +70,7 @@ public class BaseTest {
     void tearDown() {
         try {
             for (Integer id : createdProductIds) {
-                deleteProductById(id);
+                api.productApiClient.deleteProductById(id);
             }
 
             if (ConfigReader.CONFIG.enableDetailedLogging()) {
@@ -82,17 +80,6 @@ public class BaseTest {
             createdProductIds.clear();
             closeBrowser();
         }
-    }
-
-    @Step("Удалить товар с ID {id}")
-    private void deleteProductById(Integer id) {
-        given()
-                .spec(requestSpec)
-                .pathParam("id", id)
-                .delete("/{id}")
-                .then()
-                .log().all()
-                .statusCode(200);
     }
 
     @Step("Закрыть браузер")

@@ -13,6 +13,7 @@ repositories {
 allure {
     report {
         version.set("2.29.0")
+        singleFile.set(true)
     }
     adapter {
         aspectjWeaver.set(true)

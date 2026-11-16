@@ -30,4 +30,12 @@ public class ProductApiClient {
                 .data()
                 .get("id");
     }
+
+    @Step("Удалить товар с ID {id}")
+    public Response deleteProductById(Integer id) {
+        return given()
+                .spec(getRequestSpec())
+                .pathParam("id", id)
+                .delete("/{id}");
+    }
 }
